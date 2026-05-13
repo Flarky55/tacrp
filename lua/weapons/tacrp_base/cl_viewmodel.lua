@@ -200,7 +200,7 @@ function SWEP:DrawCustomModel(wm, custom_wm, isDepthPass)
         end
     end
 
-    if !wm then
+    if !wm and !isDepthPass then
         self:DrawFlashlightsVM()
     end
 end
