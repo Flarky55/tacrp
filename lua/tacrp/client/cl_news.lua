@@ -1391,6 +1391,24 @@ Not dead, just pining for the fjords.
 </ul>
 ]]
     },
+	{
+        Title = "Reminder",
+        Type = "News",
+        Date = "2026-05-20",
+        Author = "The TacRP Developers",
+        Major = true,
+        Summary = "my gf gets harder than i do",
+        Contents = [[<body style="font-family:'Myriad Pro';color:white;font-size:125%;">
+<h1>TRANS RIGHTS ARE HUMAN RIGHTS</h1>
+<h1>THE RIGHT TO EXIST IS NOT POLITICAL</h1>
+
+<p>TacRP is made by a development team that is majority queer. We wholeheartedly support LGBTQ+ rights in all parts of the world and denounce homophobia, transphobia, racism, nationalism, fascism and pedophilia. 
+<p>If you believe you are having politics "shoved down your throat" by seeing a message from an addon's developer supporting queer rights, you are a depoliticized culture warrior who is unwittingly fighting on the side of corrupt billionaires and human rights violators to strengthen and preserve dictatorial government power.
+<p>To those of you who are not yet too far gone, you have the power to look within yourself and realize your hate is directionless, instilled in you by propaganda and your lack of initiative to form your own opinions. If you take a bit of time to get to know a queer person, or do research on queer issues, maybe you can overcome your bigotry.
+<p>To the rest of you, you will be left behind, sad and alone. gg no re
+
+]]
+    },
 }
 TacRP.NewsRead = TacRP.NewsRead or {}
 TacRP.NewsFirstLoad = false
