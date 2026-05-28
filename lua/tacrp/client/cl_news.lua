@@ -1391,22 +1391,40 @@ Not dead, just pining for the fjords.
 </ul>
 ]]
     },
-	{
-        Title = "Reminder",
-        Type = "News",
-        Date = "2026-05-20",
-        Author = "The TacRP Developers",
-        Major = true,
-        Summary = "my gf gets harder than i do",
+    {
+        Title = "Update 36",
+        Type = "Patch Notes",
+        Date = "2026-05-28",
+        Author = "8Z",
+        Major = false,
+        Summary = "",
         Contents = [[<body style="font-family:'Myriad Pro';color:white;font-size:125%;">
-<h1>TRANS RIGHTS ARE HUMAN RIGHTS</h1>
-<h1>THE RIGHT TO EXIST IS NOT POLITICAL</h1>
+<h3>Changelist:</h3>
+<ul>
+<li><b>Removed:</b> Self-shoot feature (for Workshop policy reasons.)
 
-<p>TacRP is made by a development team that is majority queer. We wholeheartedly support LGBTQ+ rights in all parts of the world and denounce homophobia, transphobia, racism, nationalism, fascism and pedophilia. 
-<p>If you believe you are having politics "shoved down your throat" by seeing a message from an addon's developer supporting queer rights, you are a depoliticized culture warrior who is unwittingly fighting on the side of corrupt billionaires and human rights violators to strengthen and preserve dictatorial government power.
-<p>To those of you who are not yet too far gone, you have the power to look within yourself and realize your hate is directionless, instilled in you by propaganda and your lack of initiative to form your own opinions. If you take a bit of time to get to know a queer person, or do research on queer issues, maybe you can overcome your bigotry.
-<p>To the rest of you, you will be left behind, sad and alone. gg no re
+</ul>
+]]
+    },
+    {
+        Title = "Reupload Notice and Clarification",
+        Type = "Important News",
+        Date = "2026-05-28",
+        Author = "8Z",
+        Major = true,
+        Summary = "",
+        Contents = [[<body style="font-family:'Myriad Pro';color:white;font-size:125%;">
+<p>The original upload of TacRP was taken down by Steam due to content depicting self-harm, as part of recent Steam guidelines not in place when the self-shooting feature was added. We were not aware of this, but Steam Support did not allow us the opportunity to modify and restore the original addon. We apologize for the inconvenience.</p>
 
+<p>Prior to this takedown, a TacRP contributor added a message urging users to support LGBTQ rights in their country, utilizing a reputable third-party API for the sole purpose of displaying the user's country as part of the message. This data is never stored or transmitted. Claims of TacRP gathering personal information or tracking users are untrue.</p>
+
+<p><b>TacRP is made by a diverse group of LGBTQ creators.</b> We hoped that the people who enjoyed our work would recongize the prejudice and oppression that threaten queer people like us. It is saddening to see an outpour of vitriol in response to such a simple plea. For many users, even acknowleding our identity and humanity was too much to ask for.</p>
+
+<p>In spite of this, we have decided to reupload and continue maintaining TacRP. Some TacRP addons are also being reuploaded to consolidate the items under one user.</p>
+
+<p><b>We urge you to report unauthorized reuploads of TacRP</b>, as they are in violation of Workshop guidelines and still contain self-harm content.</p>
+
+<p>We appreciate those who support our right to exist and live as equals. We will not be so easily erased.</p>
 ]]
     },
 }
