@@ -235,12 +235,15 @@ local conVars = {
         max = 10,
         replicated = true,
     },
+    -- Disabled for Workshop policy compliance
+    --[[
     {
         name = "idunwannadie",
         default = "0",
         client = true,
         userinfo = true,
     },
+    ]]
     {
         name = "aim_cancels_sprint",
         default = "1",
@@ -1445,10 +1448,13 @@ local function menu_client_ti(panel)
     })
     panel:ControlHelp("#tacrp.client.nearwall.desc")
 
+    -- Disabled for Workshop policy compliance
+    --[[]
     panel:AddControl("checkbox", {
         label = "#tacrp.client.disablesuicide", -- Disable Suicide Mode
         command = "tacrp_idunwannadie"
     })
+    ]]
     panel:ControlHelp("#tacrp.client.disablesuicide.desc")
     panel:AddControl("checkbox", {
         label = "#tacrp.client.drawholstered", -- Draw Holstered Weapons
