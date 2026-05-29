@@ -1540,9 +1540,9 @@ function TacRP.CreateNewsPanel(open)
 
     local is_workshop = nil
     local last_update = nil
-    steamworks.FileInfo(2588031232, function(result)
+    steamworks.FileInfo(3734712166, function(result)
         last_update = os.date("%Y-%m-%d %H:%M", result.updated)
-        is_workshop = steamworks.ShouldMountAddon(2588031232)
+        is_workshop = steamworks.ShouldMountAddon(3734712166)
     end)
 
     local w_news, h_news = TacRP.SS(384), TacRP.SS(256)
