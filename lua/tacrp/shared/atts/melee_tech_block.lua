@@ -15,7 +15,6 @@ ATT.Free = true
 
 local function hold(wep)
     return wep:GetOwner():KeyDown(IN_ATTACK2)
-            and wep:GetBreath() > 0
             and wep:GetNextSecondaryFire() < CurTime()
 end
 
@@ -42,11 +41,14 @@ end
 
 ATT.Hook_PreShoot = function(wep)
     if wep:GetNWFloat("TacRPKnifeCounter", 0) > CurTime() then
-        wep:EmitSound("common/warning.wav", 70, 120, 1, CHAN_AUTO)
+        -- wep:EmitSound("common/warning.wav", 70, 120, 1, CHAN_AUTO)
         -- wep:SetBreath(math.max(0, wep:GetBreath() - 0.5))
         wep:Melee(true)
-        wep:SetOutOfBreath(false)
-        wep:SetNWFloat("TacRPKnifeCounter", 0)
+        if IsFirstTimePredicted() then
+            wep:SetOutOfBreath(false)
+            wep:SetNWFloat("TacRPKnifeCounter", 0)
+        end
+
         return true
     end
     if wep:GetOutOfBreath() then return true end
@@ -73,13 +75,9 @@ ATT.Hook_PostThink = function(wep)
             wep:SetOutOfBreath(false)
             wep:PlayAnimation("idle", 1)
             wep:SetShouldHoldType()
-            if wep:GetNWFloat("TacRPKnifeCounter", 0) < CurTime() then
-                wep:SetNextSecondaryFire(CurTime() + 0.5)
-            else
-                wep:SetNextSecondaryFire(CurTime() + 0.15)
-            end
+            wep:SetNextSecondaryFire(CurTime() + 0.25)
         else
-            wep:SetBreath(math.max(0, wep:GetBreath() - ft * 0.25))
+            wep:SetBreath(math.max(0, wep:GetBreath() - ft * 0.2))
         end
     end
 
@@ -93,7 +91,7 @@ hook.Add("EntityTakeDamage", "TacRP_Block", function(ent, dmginfo)
     if !IsValid(dmginfo:GetAttacker()) or !ent:IsPlayer() then return end
     local wep = ent:GetActiveWeapon()
 
-    if !IsValid(wep) or !wep.ArcticTacRP or !wep:GetValue("MeleeBlock") or !wep:GetBreath() then return end
+    if !IsValid(wep) or !wep.ArcticTacRP or !wep:GetValue("MeleeBlock") or !wep:GetOutOfBreath() then return end
     if !(dmginfo:IsDamageType(DMG_GENERIC) or dmginfo:IsDamageType(DMG_CLUB) or dmginfo:IsDamageType(DMG_CRUSH) or dmginfo:IsDamageType(DMG_SLASH) or dmginfo:GetDamageType() == 0) then return end
     -- if dmginfo:GetAttacker():GetPos():DistToSqr(ent:GetPos()) >= 22500 then return end
     if (dmginfo:GetAttacker():GetPos() - ent:EyePos()):GetNormalized():Dot(ent:EyeAngles():Forward()) < 0.5 and ((dmginfo:GetDamagePosition() - ent:EyePos()):GetNormalized():Dot(ent:EyeAngles():Forward()) < 0.5) then return end
@@ -112,8 +110,7 @@ hook.Add("EntityTakeDamage", "TacRP_Block", function(ent, dmginfo)
     fx:SetAngles(ang)
     util.Effect("ManhackSparks", fx)
 
-    ent:EmitSound("physics/metal/metal_solid_impact_hard5.wav", 90, math.Rand(105, 110))
-    ent:ViewPunch(AngleRand(-1, 1) * (dmginfo:GetDamage() ^ 0.5))
+    ent:EmitSound("physics/metal/metal_solid_impact_hard5.wav", 80, 80 + wep:GetBreath() * math.Rand(20, 30))
 
     wep:SetNWFloat("TacRPKnifeCounter", CurTime() + 0.6)
 
@@ -128,8 +125,15 @@ hook.Add("EntityTakeDamage", "TacRP_Block", function(ent, dmginfo)
     if wep:GetBreath() <= 0 then
         ent:SetActiveWeapon(NULL)
         ent:DropWeapon(wep, dmginfo:GetAttacker():GetPos())
-        ent:EmitSound("physics/metal/metal_box_break1.wav", 80, 110)
+        ent:EmitSound("physics/metal/metal_box_break1.wav", 80, 90)
+        ent:ViewPunch(AngleRand(-20, 20))
+    else
+        ent:ViewPunch(AngleRand(-1, 1) * (dmginfo:GetDamage() ^ 0.5))
     end
+
+    wep:SetBreath(math.max(0, wep:GetBreath() - dmginfo:GetDamage() * 0.01))
+
+    dmginfo:SetDamage(0)
 
     return true
 end)
